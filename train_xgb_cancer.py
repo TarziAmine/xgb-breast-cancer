@@ -38,9 +38,9 @@ def main(args):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description="Train an XGBoost model on the Breast Cancer dataset.")
-	parser.add_argument("--n_estimators", type=int, default=500, help="Number of boosting rounds.")
+	parser.add_argument("--n_estimators", type=int, default=1000, help="Number of boosting rounds.")
 	parser.add_argument("--max_depth", type=int, default=6, help="Maximum depth of a tree.")
-	parser.add_argument("--learning_rate", type=float, default=0.9, help="Boosting learning rate.")
+	parser.add_argument("--learning_rate", type=float, default=1.5, help="Boosting learning rate.")
 	parser.add_argument("--subsample", type=float, default=1.0, help="Subsample ratio of the training instances.")
 	parser.add_argument("--colsample_bytree", type=float, default=1.0, help="Subsample ratio of columns for each tree.")
 	parser.add_argument("--test_size", type=float, default=0.2, help="Test set proportion.")
