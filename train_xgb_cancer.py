@@ -7,8 +7,9 @@ from sklearn.metrics import accuracy_score, classification_report
 
 def main(args):
 	# Load Breast Cancer dataset
-	data = load_breast_cancer()
-	X, y = data.data, data.target
+	X, y = load_breast_cancer(return_X_y=True)
+	# For target_names, load the dataset metadata
+	data_meta = load_breast_cancer()
 	# Split data into train/test
 	X_train, X_test, y_train, y_test = train_test_split(
 		X, y, test_size=args.test_size, random_state=42, stratify=y
@@ -30,7 +31,7 @@ def main(args):
 	preds = model.predict(X_test)
 	acc = accuracy_score(y_test, preds)
 	print(f"\nTest Accuracy: {acc:.4f}\n")
-	print("Classification Report:")
+	print(classification_report(y_test, preds, target_names=data_meta.target_names))
 	print(classification_report(y_test, preds, target_names=data.target_names))
 	# Save the model
 	joblib.dump(model, args.model_path)
